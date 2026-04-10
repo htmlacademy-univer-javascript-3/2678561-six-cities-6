@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
-import { Offer } from '../../types/offer';
+import { OfferPreview } from '../../types/offer';
 import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
-  offers: Offer[];
+  offers: OfferPreview[];
   activeOfferId?: string | null;
 };
 

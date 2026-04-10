@@ -16,7 +16,7 @@ export enum PageTitle {
   Login = '6 cities. Sign in',
   Main = '6 cities',
   Favorites = '6 cities. Saved listing',
-  Offer = '6 cities. Offer',
+  Offer = '6 cities. ',
   NotFound = '6 cities. Page not found',
 }
 

@@ -1,8 +1,8 @@
 import OfferItem from '../offer-item/offer-item';
-import { Offer } from '../../types/offer';
+import { OfferPreview } from '../../types/offer';
 
 type OffersListProps = {
-  offers: Offer[];
+  offers: OfferPreview[];
   onHover?: (id: string | null) => void;
 };
 

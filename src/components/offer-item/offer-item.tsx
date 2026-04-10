@@ -1,8 +1,8 @@
-import { Offer } from '../../types/offer';
+import { OfferPreview } from '../../types/offer';
 import { Link } from 'react-router-dom';
 
 type OfferItemProps = {
-  offer: Offer;
+  offer: OfferPreview;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 }

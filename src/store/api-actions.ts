@@ -3,7 +3,7 @@ import { AxiosInstance } from 'axios';
 import { requireAuthorization } from './action';
 import { AuthorizationStatus } from '../const';
 import { saveToken, dropToken } from '../services/token';
-import { Offer } from '../types/offer';
+import { OfferPreview, Offer } from '../types/offer';
 import { AuthData, AuthResponse } from '../types/auth';
 import { APIRoute } from '../const';
 
@@ -51,10 +51,19 @@ export const logout = createAsyncThunk<
 );
 
 export const fetchOffers = createAsyncThunk<
-  Offer[],
+  OfferPreview[],
   undefined,
   { extra: AxiosInstance }
 >('data/fetchOffers', async (_, { extra: api }) => {
-  const { data } = await api.get<Offer[]>(APIRoute.Offers);
+  const { data } = await api.get<OfferPreview[]>(APIRoute.Offers);
+  return data;
+});
+
+export const fetchOffer = createAsyncThunk<
+  Offer,
+  string,
+  { extra: AxiosInstance }
+>('data/fetchOffer', async (offerId, { extra: api }) => {
+  const { data } = await api.get<Offer>(`${APIRoute.Offers}/${offerId}`);
   return data;
 });

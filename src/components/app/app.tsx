@@ -15,14 +15,16 @@ import { AppDispatch, RootState } from '../../store';
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const { isLoading, authorizationStatus } = useSelector((state: RootState) => state);
+  const { isOffersLoading, authorizationStatus } = useSelector(
+    (state: RootState) => state,
+  );
 
   useEffect(() => {
     dispatch(fetchOffers());
     dispatch(checkAuth());
   }, [dispatch]);
 
-  if (isLoading) {
+  if (isOffersLoading) {
     return <Spinner />;
   }
 
@@ -34,9 +36,11 @@ function App(): JSX.Element {
           <Route
             path={AppRoute.Login}
             element={
-              authorizationStatus === AuthorizationStatus.Auth
-                ? <Navigate to={AppRoute.Main} />
-                : <LoginPage />
+              authorizationStatus === AuthorizationStatus.Auth ? (
+                <Navigate to={AppRoute.Main} />
+              ) : (
+                <LoginPage />
+              )
             }
           />
           <Route
